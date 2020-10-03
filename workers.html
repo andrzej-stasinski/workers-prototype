@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>nowy 1</title>
+    <style>
+        #container {
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='container'>
+        <h2 id="pracownicy">Pracownicy</h2>
+
+
+        <span>wybierz płeć</span>
+        <select id="plec" onchange="selectPlec()">
+            <option value="all" selected="selected">mężczyźni i kobiety</option>
+            <option value="m">mężczyzna</option>
+            <option value="k">kobieta</option>
+        </select><br/>
+
+        <div id='table'></div>
+    </div>
+
+    <script src='script.js'></script>
+</body>
+
+</html>
