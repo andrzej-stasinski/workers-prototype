@@ -2,6 +2,7 @@ var p = document.getElementById("pracownicy");
 var e = document.getElementById("plec");
 
 var pensjaSum = { m: 0, k: 0, razem: 0 };
+var chosenSex = 'all'
 
 var Pracownik = function (imie, nazwisko, wiek, wyplaty, dniWTygodniu, pelnyEtap, plec) {
     this.imie = imie;
@@ -64,6 +65,8 @@ for (var i in tabLudzi) {
 
 function selectPlec() {
     var value = e.options[e.selectedIndex].value;
+    console.log(value)
+    chosenSex = value
     var tabLudziFilter =  value === 'all' ? tabLudzi : tabLudzi.filter(pr => pr.plec === value);
     makeTable(tabLudziFilter);
 }
@@ -75,10 +78,15 @@ function makeTable(tabelaPrac) {
         for (var i in tabelaPrac) {
             dataTable += tabelaPrac[i].getInfo();
         }
-        dataTable += `<tr><td colspan="3">Razem do wypłaty męzczyzny: </td><td> ${pensjaSum.m}</td></tr>`;
-        dataTable += `<tr><td colspan="3">Razem do wypłaty kobiety: </td><td> ${pensjaSum.k}</td></tr>`;
-        dataTable += `<tr><td colspan="3">Razem do wypłaty razem: </td><td> ${pensjaSum.razem}</td></tr>`;            
-    dataTable += '</table>';
+        console.log(chosenSex)
+        if(chosenSex === 'all') 
+            dataTable += `<tr><td colspan="3">Razem do wypłaty razem: </td><td> ${pensjaSum.razem}</td></tr>`;            
+        if(chosenSex === 'm')
+            dataTable += `<tr><td colspan="3">Razem do wypłaty męzczyzny: </td><td> ${pensjaSum.m}</td></tr>`;
+        if(chosenSex === 'k')
+            dataTable += `<tr><td colspan="3">Razem do wypłaty kobiety: </td><td> ${pensjaSum.k}</td></tr>`;
+    
+            dataTable += '</table>';
     table.innerHTML = dataTable;
 }
 
